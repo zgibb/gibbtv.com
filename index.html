@@ -76,4 +76,730 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 0.3s, backdrop-filter 0.3s, bor
+      transition: background 0.3s, backdrop-filter 0.3s, border-color 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(6,6,15,0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--accent) !important;
+      color: #000 !important;
+      font-weight: 700 !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 8px;
+      transition: opacity 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85 !important; transform: translateY(-1px) !important; }
+
+    /* ── HERO ───────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0,229,204,0.08);
+      border: 1px solid rgba(0,229,204,0.2);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 2rem;
+      animation: fade-up 0.8s ease both;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      animation: fade-up 0.8s 0.1s ease both;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, #00b8ff 50%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.65;
+      margin-bottom: 3rem;
+      animation: fade-up 0.8s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 5rem;
+      animation: fade-up 0.8s 0.3s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 0 30px rgba(0,229,204,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,229,204,0.45); }
+    .btn-ghost {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border2);
+      backdrop-filter: blur(10px);
+    }
+    .btn-ghost:hover { background: var(--glass); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+
+    /* ── 3D Phone stack ─────────────────────────────────────────── */
+    .hero-visual { position: relative; width: min(900px, 100%); animation: fade-up 0.8s 0.4s ease both; }
+
+    .phones-3d {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 300px;
+      position: relative;
+      perspective: 1200px;
+    }
+
+    .phone-card {
+      width: 130px;
+      height: 255px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.12);
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      transition: transform 0.08s ease-out;
+    }
+    .phone-card:nth-child(1) { transform: rotateY(25deg) rotateX(5deg) translateX(-160px) translateZ(-40px) scale(0.88); }
+    .phone-card:nth-child(2) { transform: rotateY(12deg) rotateX(3deg) translateX(-70px) translateZ(0px) scale(0.94); }
+    .phone-card:nth-child(3) { transform: rotateY(0deg) rotateX(0deg) translateX(0px) translateZ(40px) scale(1); z-index: 10; }
+    .phone-card:nth-child(4) { transform: rotateY(-12deg) rotateX(3deg) translateX(70px) translateZ(0px) scale(0.94); }
+    .phone-card:nth-child(5) { transform: rotateY(-25deg) rotateX(5deg) translateX(160px) translateZ(-40px) scale(0.88); }
+
+    .phone-notch { height: 18px; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; }
+    .phone-notch::after { content: ''; width: 38px; height: 4px; background: rgba(255,255,255,0.08); border-radius: 999px; }
+
+    .phone-screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 0.75rem;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .phone-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%); }
+
+    .phone-label { position: relative; z-index: 2; }
+    .ch-badge {
+      font-size: 0.5rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.12rem 0.35rem;
+      border-radius: 3px;
+      margin-bottom: 0.2rem;
+      display: inline-block;
+    }
+    .ch-title { font-size: 0.58rem; font-weight: 600; color: rgba(255,255,255,0.9); line-height: 1.3; }
+
+    /* channel screen BGs */
+    .ch-sector47   { background: linear-gradient(135deg, #061a10 0%, #0a2518 100%); }
+    .ch-realm      { background: linear-gradient(135deg, #180a35 0%, #2d1a4a 100%); }
+    .ch-factdrop   { background: linear-gradient(135deg, #060e1a 0%, #0d1f35 100%); }
+    .ch-furry      { background: linear-gradient(135deg, #1c0a00 0%, #2d1800 100%); }
+    .ch-mindtrap   { background: linear-gradient(135deg, #1a0028 0%, #2d0040 100%); }
+
+    /* ── STATS ──────────────────────────────────────────────────── */
+    .stats-bar { position: relative; z-index: 1; padding: 0 2rem 3rem; display: flex; justify-content: center; }
+    .stats-inner {
+      display: flex;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      border-radius: 16px;
+      overflow: hidden;
+      flex-wrap: wrap;
+    }
+    .stat-item { padding: 1.5rem 2.5rem; border-right: 1px solid var(--border); text-align: center; flex: 1; min-width: 130px; }
+    .stat-item:last-child { border-right: none; }
+    .stat-value { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; color: #fff; line-height: 1; }
+    .stat-value .accent { color: var(--accent); }
+    .stat-label { font-size: 0.72rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.25rem; }
+
+    /* ── SECTIONS ───────────────────────────────────────────────── */
+    section { position: relative; z-index: 1; padding: 5rem 2rem; }
+    .section-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
+    .section-sub { font-size: 1rem; color: var(--muted); max-width: 500px; line-height: 1.65; }
+    .section-header { margin-bottom: 3.5rem; }
+
+    /* ── CHANNELS GRID ──────────────────────────────────────────── */
+    .channels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+
+    .channel-card {
+      position: relative;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      cursor: pointer;
+      will-change: transform;
+      transform-style: preserve-3d;
+    }
+    .channel-card:hover { box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+
+    .card-bg { padding: 2rem; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+
+    .card-glow {
+      position: absolute;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.25;
+      top: -50px; right: -50px;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .channel-card:hover .card-glow { opacity: 0.5; }
+
+    .card-shimmer {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0) 100%);
+      opacity: 0; transition: opacity 0.3s; pointer-events: none;
+    }
+    .channel-card:hover .card-shimmer { opacity: 1; }
+
+    .card-top, .card-bottom { position: relative; z-index: 2; }
+    .card-icon { font-size: 2.2rem; line-height: 1; margin-bottom: 0.5rem; }
+    .card-name { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: #fff; margin-bottom: 0.35rem; }
+    .card-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+    .card-tag { display: inline-block; font-size: 0.67rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 6px; border: 1px solid; margin-top: 1rem; }
+
+    /* ── PIPELINE STEPS ─────────────────────────────────────────── */
+    .pipeline-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .pipeline-step { background: var(--bg); padding: 1.75rem 1.4rem; transition: background 0.3s; }
+    .pipeline-step:hover { background: rgba(255,255,255,0.03); }
+    .step-num { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.85rem; }
+    .step-icon { font-size: 1.6rem; display: block; margin-bottom: 0.6rem; }
+    .step-title { font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 0.35rem; }
+    .step-desc { font-size: 0.76rem; color: var(--dim); line-height: 1.55; }
+
+    /* ── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .footer-brand { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; color: #fff; }
+    .footer-brand span { color: var(--accent); }
+    .footer-desc { font-size: 0.82rem; color: var(--dim); max-width: 320px; margin-top: 0.5rem; line-height: 1.6; }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+    .footer-links a { font-size: 0.82rem; color: var(--dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--dim); flex-wrap: wrap; gap: 0.5rem; }
+    .footer-status { display: flex; align-items: center; gap: 0.5rem; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; animation: pulse-dot 2.5s infinite; }
+
+    /* ── Animations ─────────────────────────────────────────────── */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+
+    /* ── Responsive ─────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 0.875rem 1.25rem; }
+      .nav-links { display: none; }
+      section { padding: 3.5rem 1.25rem; }
+      .phones-3d { height: 220px; }
+      .phone-card { width: 95px; height: 185px; }
+      .phone-card:nth-child(1), .phone-card:nth-child(5) { display: none; }
+      .phone-card:nth-child(2) { transform: rotateY(12deg) rotateX(3deg) translateX(-65px) scale(0.88); }
+      .phone-card:nth-child(4) { transform: rotateY(-12deg) rotateX(3deg) translateX(65px) scale(0.88); }
+      .stats-inner { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Ambient orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- ── NAV ──────────────────────────────────────────────────────── -->
+<nav id="nav">
+  <a class="nav-logo" href="#">Gibb<span>TV</span></a>
+  <ul class="nav-links">
+    <li><a href="#channels">Channels</a></li>
+    <li><a href="#pipeline">How it Works</a></li>
+    <li><a href="admin.html" class="nav-cta">Admin ↗</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    7 Channels · Fully Autonomous · AI-Powered
+  </div>
+
+  <h1>
+    Content that<br>
+    <span class="gradient-text">runs itself.</span>
+  </h1>
+
+  <p class="hero-sub">
+    GibbTV is an autonomous AI-powered short-form video network. Scripts written, voices cloned, videos generated, and posts scheduled — without lifting a finger.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#channels" class="btn btn-primary">Explore Channels →</a>
+    <a href="#pipeline" class="btn btn-ghost">See How it Works</a>
+  </div>
+
+  <!-- 3D phone stack -->
+  <div class="hero-visual">
+    <div class="phones-3d" id="phones3d">
+
+      <div class="phone-card">
+        <div class="phone-notch"></div>
+        <div class="phone-screen ch-factdrop">
+          <div class="phone-overlay"></div>
+          <div class="phone-label">
+            <div class="ch-badge" style="background:rgba(59,159,232,0.2);color:#3b9fe8">FACTDROP</div>
+            <div class="ch-title">5 things nobody tells you about the deep sea</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone-card">
+        <div class="phone-notch"></div>
+        <div class="phone-screen ch-realm">
+          <div class="phone-overlay"></div>
+          <div class="phone-label">
+            <div class="ch-badge" style="background:rgba(168,85,247,0.2);color:#a855f7">REALM GAZETTE</div>
+            <div class="ch-title">The kingdom that vanished overnight</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone-card">
+        <div class="phone-notch"></div>
+        <div class="phone-screen ch-sector47">
+          <div class="phone-overlay"></div>
+          <div class="phone-label">
+            <div class="ch-badge" style="background:rgba(0,229,204,0.2);color:#00e5cc">SECTOR 47</div>
+            <div class="ch-title">UFO detected over restricted airspace</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone-card">
+        <div class="phone-notch"></div>
+        <div class="phone-screen ch-mindtrap">
+          <div class="phone-overlay"></div>
+          <div class="phone-label">
+            <div class="ch-badge" style="background:rgba(236,72,153,0.2);color:#ec4899">MINDTRAP</div>
+            <div class="ch-title">Your brain can't solve this riddle</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone-card">
+        <div class="phone-notch"></div>
+        <div class="phone-screen ch-furry">
+          <div class="phone-overlay"></div>
+          <div class="phone-label">
+            <div class="ch-badge" style="background:rgba(249,115,22,0.2);color:#f97316">FURRYFAILS</div>
+            <div class="ch-title">Dog vs. automatic door compilation</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ─────────────────────────────────────────────────────── -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-value"><span class="count accent" data-target="7">0</span></div>
+      <div class="stat-label">Active Channels</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value"><span class="count" data-target="2">0</span>×</div>
+      <div class="stat-label">Daily Posts / Channel</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value"><span class="count" data-target="100">0</span>%</div>
+      <div class="stat-label">Automated</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value"><span class="count" data-target="0">0</span></div>
+      <div class="stat-label">Crew Members</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CHANNELS ───────────────────────────────────────────────────── -->
+<section id="channels" style="max-width:1200px;margin:0 auto">
+  <div class="section-header reveal">
+    <div class="section-label">The Network</div>
+    <h2 class="section-title">7 channels.<br>Zero crew.</h2>
+    <p class="section-sub">Each channel has its own niche, voice, and visual identity — all generated and posted autonomously.</p>
+  </div>
+
+  <div class="channels-grid">
+
+    <div class="channel-card reveal reveal-delay-1" data-tilt>
+      <div class="card-shimmer"></div>
+      <div class="card-glow" style="background:rgba(0,229,204,0.8)"></div>
+      <div class="card-bg" style="background:linear-gradient(135deg,#061a10 0%,#0a2518 50%,#061a10 100%)">
+        <div class="card-top">
+          <div class="card-icon">📡</div>
+          <div class="card-name">Sector 47</div>
+          <div class="card-desc">UFO sightings, government cover-ups, classified incidents, and the unexplained phenomena hiding in plain sight.</div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-tag" style="color:#00e5cc;border-color:rgba(0,229,204,0.3)">UFO · Paranormal · Classified</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="channel-card reveal reveal-delay-2" data-tilt>
+      <div class="card-shimmer"></div>
+      <div class="card-glow" style="background:rgba(168,85,247,0.8)"></div>
+      <div class="card-bg" style="background:linear-gradient(135deg,#180a35 0%,#2d1a4a 50%,#180a35 100%)">
+        <div class="card-top">
+          <div class="card-icon">📜</div>
+          <div class="card-name">The Realm Gazette</div>
+          <div class="card-desc">Forgotten kingdoms, lost civilizations, and the strangest chapters of human history told in 60 seconds.</div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-tag" style="color:#a855f7;border-color:rgba(168,85,247,0.3)">History · Kingdoms · Lost Worlds</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="channel-card reveal reveal-delay-3" data-tilt>
+      <div class="card-shimmer"></div>
+      <div class="card-glow" style="background:rgba(59,159,232,0.8)"></div>
+      <div class="card-bg" style="background:linear-gradient(135deg,#060e1a 0%,#0d1f35 50%,#060e1a 100%)">
+        <div class="card-top">
+          <div class="card-icon">💡</div>
+          <div class="card-name">FactDrop</div>
+          <div class="card-desc">Mind-bending facts, counterintuitive truths, and the data behind the things everyone gets wrong.</div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-tag" style="color:#3b9fe8;border-color:rgba(59,159,232,0.3)">Facts · Science · Data</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="channel-card reveal reveal-delay-4" data-tilt>
+      <div class="card-shimmer"></div>
+      <div class="card-glow" style="background:rgba(249,115,22,0.8)"></div>
+      <div class="card-bg" style="background:linear-gradient(135deg,#1c0a00 0%,#2d1800 50%,#1c0a00 100%)">
+        <div class="card-top">
+          <div class="card-icon">🐾</div>
+          <div class="card-name">FurryFails</div>
+          <div class="card-desc">The internet's best animal chaos, AI-curated and narrated fresh every day.</div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-tag" style="color:#f97316;border-color:rgba(249,115,22,0.3)">Animals · Comedy · Viral</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="channel-card reveal reveal-delay-5" data-tilt>
+      <div class="card-shimmer"></div>
+      <div class="card-glow" style="background:rgba(236,72,153,0.8)"></div>
+      <div class="card-bg" style="background:linear-gradient(135deg,#1a0028 0%,#2d0040 50%,#1a0028 100%)">
+        <div class="card-top">
+          <div class="card-icon">🧠</div>
+          <div class="card-name">MindTrap</div>
+          <div class="card-desc">Optical illusions, psychological tricks, impossible riddles, and the science of why your brain breaks.</div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-tag" style="color:#ec4899;border-color:rgba(236,72,153,0.3)">Puzzles · Psychology · Illusions</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="channel-card reveal reveal-delay-6" data-tilt>
+      <div class="card-shimmer"></div>
+      <div class="card-glow" style="background:rgba(34,197,94,0.8)"></div>
+      <div class="card-bg" style="background:linear-gradient(135deg,#001a08 0%,#002d10 50%,#001a08 100%)">
+        <div class="card-top">
+          <div class="card-icon">✨</div>
+          <div class="card-name">SatisfyHQ</div>
+          <div class="card-desc">The most satisfying processes, perfect cuts, and ASMR-worthy moments from around the world.</div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-tag" style="color:#22c55e;border-color:rgba(34,197,94,0.3)">Satisfying · ASMR · Process</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="channel-card reveal" data-tilt>
+      <div class="card-shimmer"></div>
+      <div class="card-glow" style="background:rgba(234,179,8,0.8)"></div>
+      <div class="card-bg" style="background:linear-gradient(135deg,#1a1000 0%,#2d1e00 50%,#1a1000 100%)">
+        <div class="card-top">
+          <div class="card-icon">🏆</div>
+          <div class="card-name">WeirdRecords</div>
+          <div class="card-desc">The most bizarre world records, extreme achievements, and the strangest things humans have ever done.</div>
+        </div>
+        <div class="card-bottom">
+          <div class="card-tag" style="color:#eab308;border-color:rgba(234,179,8,0.3)">Records · Weird · Extreme</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PIPELINE ───────────────────────────────────────────────────── -->
+<section id="pipeline" style="max-width:1100px;margin:0 auto">
+  <div class="section-header reveal">
+    <div class="section-label">The Pipeline</div>
+    <h2 class="section-title">From idea to post<br>in minutes.</h2>
+    <p class="section-sub">Every step of content creation is automated. The only human involvement is approving the result.</p>
+  </div>
+
+  <div class="pipeline-steps reveal">
+    <div class="pipeline-step">
+      <div class="step-num">01</div>
+      <span class="step-icon">🗓️</span>
+      <div class="step-title">Topic Queue</div>
+      <div class="step-desc">n8n pulls a topic on schedule — twice daily with randomized jitter.</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">02</div>
+      <span class="step-icon">✍️</span>
+      <div class="step-title">Script Generation</div>
+      <div class="step-desc">Claude writes a 60-90 second script tuned to the channel's voice and audience.</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">03</div>
+      <span class="step-icon">🎙️</span>
+      <div class="step-title">Voice Synthesis</div>
+      <div class="step-desc">ElevenLabs converts the script to a cloned voiceover with perfect pacing.</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">04</div>
+      <span class="step-icon">🎬</span>
+      <div class="step-title">Video Generation</div>
+      <div class="step-desc">Higgsfield AI generates cinematic 9:16 clips matched to each visual prompt.</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">05</div>
+      <span class="step-icon">🎵</span>
+      <div class="step-title">Final Assembly</div>
+      <div class="step-desc">FFmpeg assembles clips, burns subtitles, mixes ambient music, renders the final MP4.</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-num">06</div>
+      <span class="step-icon">📲</span>
+      <div class="step-title">Review & Post</div>
+      <div class="step-desc">Discord notification with the video. Approve 🔥, and it posts automatically to TikTok.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Gibb<span>TV</span></div>
+      <div class="footer-desc">Autonomous AI content network. Built for scale. Runs without a crew.</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="admin.html">Admin</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 GibbTV. All rights reserved.</span>
+    <div class="footer-status">
+      <div class="status-dot"></div>
+      <span>Pipeline operational</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Nav scroll effect ────────────────────────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// ── Scroll reveal ────────────────────────────────────────────────
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ── Animated counters ────────────────────────────────────────────
+const countObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseFloat(el.dataset.target);
+    const duration = 1400;
+    const start = performance.now();
+    const tick = now => {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target);
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    countObserver.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+
+// ── 3D card tilt ─────────────────────────────────────────────────
+document.querySelectorAll('[data-tilt]').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width  - 0.5;
+    const y = (e.clientY - r.top)  / r.height - 0.5;
+    card.style.transform = `perspective(800px) rotateX(${-y * 12}deg) rotateY(${x * 12}deg) translateZ(8px)`;
+    card.style.transition = 'transform 0.1s ease';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.transition = 'transform 0.5s ease';
+  });
+  card.addEventListener('mouseenter', () => {
+    card.style.transition = 'transform 0.15s ease';
+  });
+});
+
+// ── Phone parallax on mouse move ─────────────────────────────────
+const phones = document.querySelectorAll('.phone-card');
+const baseTransforms = [
+  (x, y) => `rotateY(25deg) rotateX(5deg) translateX(calc(-160px + ${x * 20}px)) translateY(${y * 10}px) translateZ(-40px) scale(0.88)`,
+  (x, y) => `rotateY(12deg) rotateX(3deg) translateX(calc(-70px + ${x * 12}px)) translateY(${y * 6}px) translateZ(0px) scale(0.94)`,
+  (x, y) => `rotateY(${x * -4}deg) rotateX(${y * -2.5}deg) translateX(${x * 5}px) translateY(${y * 3}px) translateZ(40px) scale(1)`,
+  (x, y) => `rotateY(-12deg) rotateX(3deg) translateX(calc(70px + ${x * 12}px)) translateY(${y * 6}px) translateZ(0px) scale(0.94)`,
+  (x, y) => `rotateY(-25deg) rotateX(5deg) translateX(calc(160px + ${x * 20}px)) translateY(${y * 10}px) translateZ(-40px) scale(0.88)`,
+];
+
+window.addEventListener('mousemove', e => {
+  const cx = window.innerWidth / 2;
+  const cy = window.innerHeight / 2;
+  const nx = (e.clientX - cx) / cx;
+  const ny = (e.clientY - cy) / cy;
+  phones.forEach((p, i) => {
+    if (baseTransforms[i]) p.style.transform = baseTransforms[i](nx, ny);
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
